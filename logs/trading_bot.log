@@ -1,0 +1,28 @@
+2026-04-03 11:34:30,401 | INFO | bot.orders | Placing MARKET BUY order for 0.001 BTCUSDT
+2026-04-03 11:34:30,408 | DEBUG | BinanceClient | REQUEST POST /fapi/v1/order params={'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': 0.001, 'timestamp': 1775196270406, 'recvWindow': 5000, 'signature': '<redacted>'}
+2026-04-03 11:34:30,415 | DEBUG | urllib3.connectionpool | Starting new HTTPS connection (1): testnet.binancefuture.com:443
+2026-04-03 11:34:30,699 | DEBUG | urllib3.connectionpool | https://testnet.binancefuture.com:443 "POST /fapi/v1/order?symbol=BTCUSDT&side=BUY&type=MARKET&quantity=0.001&timestamp=1775196270406&recvWindow=5000&signature=<redacted> HTTP/1.1" 400 100
+2026-04-03 11:34:30,714 | DEBUG | BinanceClient | RESPONSE status=400 body={"code":-4164,"msg":"Order's notional must be no smaller than 100 (unless you choose reduce only)."}
+2026-04-03 11:34:30,715 | ERROR | cli | Order failed
+Traceback (most recent call last):
+  File "D:\internship\ai agent\trading_bot\cli.py", line 64, in main
+    result = place_order(
+  File "D:\internship\ai agent\trading_bot\bot\orders.py", line 57, in place_order
+    response = client.place_order(**params)
+  File "D:\internship\ai agent\trading_bot\bot\client.py", line 97, in place_order
+    return self._request("POST", "/fapi/v1/order", params=kwargs, signed=True)
+  File "D:\internship\ai agent\trading_bot\bot\client.py", line 88, in _request
+    raise BinanceAPIError(error_payload.get("code"), error_payload.get("msg"))
+bot.client.BinanceAPIError: Order's notional must be no smaller than 100 (unless you choose reduce only).
+2026-04-03 11:34:59,630 | INFO | bot.orders | Placing MARKET BUY order for 0.002 BTCUSDT
+2026-04-03 11:34:59,630 | DEBUG | BinanceClient | REQUEST POST /fapi/v1/order params={'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': 0.002, 'timestamp': 1775196299630, 'recvWindow': 5000, 'signature': '<redacted>'}
+2026-04-03 11:34:59,630 | DEBUG | urllib3.connectionpool | Starting new HTTPS connection (1): testnet.binancefuture.com:443
+2026-04-03 11:34:59,936 | DEBUG | urllib3.connectionpool | https://testnet.binancefuture.com:443 "POST /fapi/v1/order?symbol=BTCUSDT&side=BUY&type=MARKET&quantity=0.002&timestamp=1775196299630&recvWindow=5000&signature=<redacted> HTTP/1.1" 200 None
+2026-04-03 11:34:59,938 | DEBUG | BinanceClient | RESPONSE status=200 body={"orderId":13019973393,"symbol":"BTCUSDT","status":"NEW","clientOrderId":"ZuzcZa2SUbK423UyhtX70w","price":"0.00","avgPrice":"0.00","origQty":"0.0020","executedQty":"0.0000","cumQty":"0.0000","cumQuote":"0.000000","timeInForce":"GTC","type":"MARKET","reduceOnly":false,"closePosition":false,"side":"BUY","positionSide":"BOTH","stopPrice":"0.00","workingType":"CONTRACT_PRICE","priceProtect":false,"origType":"MARKET","priceMatch":"NONE","selfTradePreventionMode":"EXPIRE_MAKER","goodTillDate":0,"updat
+2026-04-03 11:34:59,938 | INFO | bot.orders | Order placed successfully. orderId=13019973393
+2026-04-03 11:35:07,122 | INFO | bot.orders | Placing LIMIT SELL order for 0.002 BTCUSDT
+2026-04-03 11:35:07,127 | DEBUG | BinanceClient | REQUEST POST /fapi/v1/order params={'symbol': 'BTCUSDT', 'side': 'SELL', 'type': 'LIMIT', 'quantity': 0.002, 'price': 66500.0, 'timeInForce': 'GTC', 'timestamp': 1775196307127, 'recvWindow': 5000, 'signature': '<redacted>'}
+2026-04-03 11:35:07,127 | DEBUG | urllib3.connectionpool | Starting new HTTPS connection (1): testnet.binancefuture.com:443
+2026-04-03 11:35:07,404 | DEBUG | urllib3.connectionpool | https://testnet.binancefuture.com:443 "POST /fapi/v1/order?symbol=BTCUSDT&side=SELL&type=LIMIT&quantity=0.002&price=66500.0&timeInForce=GTC&timestamp=1775196307127&recvWindow=5000&signature=<redacted> HTTP/1.1" 200 None
+2026-04-03 11:35:07,408 | DEBUG | BinanceClient | RESPONSE status=200 body={"orderId":13019973445,"symbol":"BTCUSDT","status":"NEW","clientOrderId":"V551NUGnvfbcc1fj74DD67","price":"66500.00","avgPrice":"0.00","origQty":"0.0020","executedQty":"0.0000","cumQty":"0.0000","cumQuote":"0.000000","timeInForce":"GTC","type":"LIMIT","reduceOnly":false,"closePosition":false,"side":"SELL","positionSide":"BOTH","stopPrice":"0.00","workingType":"CONTRACT_PRICE","priceProtect":false,"origType":"LIMIT","priceMatch":"NONE","selfTradePreventionMode":"EXPIRE_MAKER","goodTillDate":0,"up
+2026-04-03 11:35:07,408 | INFO | bot.orders | Order placed successfully. orderId=13019973445
